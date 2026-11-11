@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>UnfreezeUserInvocable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Contains only access to the Apex class that performs the unfreezing of the user. Tested by assigning to Integration User, and setting Integration User under Setup -&gt; Process Automation Settings -&gt; Default Workflow User</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Unfreeze_User</label>
+</PermissionSet>
