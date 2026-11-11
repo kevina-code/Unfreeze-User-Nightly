@@ -71,18 +71,7 @@ The permission set grants Apex class access only. It does not grant additional u
 
 ## Setup
 
-### 1. Prepare the metadata
-
-Before deploying:
-
-- Replace the Flow's `TARGET_USER_ID` constant with the User ID of the administrator account you intend to recover.
-- Change the Flow status from `Active` to `Draft` for initial deployment.
-- Replace the exported schedule with your desired start date and daily execution time.
-- Review the Apex and tests for compatibility with your target org.
-
-Do not deploy the example unchanged: its target User ID and schedule belong to the original configuration.
-
-### 2. Deploy the components
+### 1. Deploy the components
 
 Deploy:
 
@@ -91,19 +80,22 @@ Deploy:
 - The `Unfreeze_User` permission set.
 - The schedule-triggered Flow.
 
+### 2. Post deployment steps
+- Replace the Flow's `TARGET_USER_ID` constant with the User ID of the administrator account you intend to recover.
+- Change the Flow status from `Active` to `Draft` for initial deployment.
+- Replace the exported schedule with your desired start date and daily execution time.
+
 Example using the Salesforce CLI:
 
 ```bash
 sf project deploy start --source-dir force-app --target-org <your-org-alias> --test-level RunSpecifiedTests --tests UnfreezeUserInvocableTest
 ```
 
-Run the tests in the target org and investigate any failures before activating the schedule.
-
 ### 3. Configure the execution user
 
 In the author's tested configuration:
 
-1. An existing Integration User was selected as the Default Workflow User.
+1. The existing regular Integration User (that is in virtually every org) was selected as the Default Workflow User.
 2. The `Unfreeze_User` permission set was assigned to that user.
 
 To set the Default Workflow User, navigate to:
@@ -188,7 +180,3 @@ The supplied Flow runs daily. A freeze remains in place until a successful execu
 ## Support and status
 
 This is a community utility based on the author's own tested configuration. It is not a Salesforce-endorsed recovery mechanism, and compatibility with every org, user license, or future platform release has not been established. Use at your own risk.
-
-## License
-
-Add a license (for example, MIT) before publishing.
